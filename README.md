@@ -1,3 +1,10 @@
-# INFO 443 Project (replace this with your title!)
+# INFO 443 Project 2 -- TypeScript
 
-(Your content goes here)
+<figure>
+<figcaption align="center"> <b>The Logo of TypeScript</b> </figcaption>
+<img  src='./img/typescript.png'  alt='TypeScript logo'  width='700'>
+<figcaption align="center"> <b>Figure 1: The Logo of TypeScript</b> </figcaption>
+</figure>
+
+
+
