@@ -6,5 +6,5 @@
 <figcaption align="center"> <b>Figure 1: The Logo of TypeScript</b> </figcaption>
 </figure>
 
-
+test
 
