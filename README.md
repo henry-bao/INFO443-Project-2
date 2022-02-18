@@ -30,6 +30,40 @@ INFO 443 project authors: Alex Gherman, Henry Bao, Lisi Case, & Patrick Cheng
 
 ### Testing & Configuration
 
+Tests can be run manually from the TypeScript directory using Gulp tools after installing some dependencies.
+
+#### Directory
+
+Change to the TypeScript directory:
+
+```bash
+cd TypeScript
+```
+
+#### Dependencies
+
+Install [Gulp](https://gulpjs.com/) tools and dev dependencies:
+
+```bash
+npm install -g gulp
+npm ci
+````
+
+#### Tests
+
+Run tests and record results via your choice of the following commands:
+
+```
+gulp tests                               # Build the test infrastructure using the built compiler.
+gulp runtests                            # Run tests using the built compiler and test infrastructure.
+gulp runtests --runner=<runnerName>      # Run tests for a specific suite (e.g., conformance, compiler, fourslash, project, user, and docker).
+                                         # Note: You'll need to have the docker executable in your system path for the docker runner to work, 
+                                         # although we are not focusing on docker at the moment.
+gulp runtests-parallel                   # Like runtests, but split across multiple threads. Uses a number of threads equal to the system
+                                         # core count by default. Use --workers=<number> to adjust this.
+gulp baseline-accept                     # Replace the baseline test results with the results obtained from gulp runtests.
+```
+
 ## Applied Perspective
 
 ## Styles & Patterns Used
