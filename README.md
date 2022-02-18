@@ -51,7 +51,13 @@ npm ci
 
 #### Tests
 
-Run tests and record results via your choice of the following commands:
+Run tests for the compiler using the following command:
+
+```
+gulp runtests --runner=<compiler>        # Run tests for the compiler suite.
+```
+
+Additional commands to run tests of your choice and record results are as follows:
 
 ```
 gulp tests                               # Build the test infrastructure using the built compiler.
@@ -59,6 +65,7 @@ gulp runtests                            # Run tests using the built compiler an
 gulp runtests --runner=<runnerName>      # Run tests for a specific suite (e.g., conformance, compiler, fourslash, project, user, and docker).
                                          # Note: You'll need to have the docker executable in your system path for the docker runner to work, 
                                          # although we are not focusing on docker at the moment.
+gulp runtests --tests=<testPath>         # Run a specific test.
 gulp runtests-parallel                   # Like runtests, but split across multiple threads. Uses a number of threads equal to the system
                                          # core count by default. Use --workers=<number> to adjust this.
 gulp baseline-accept                     # Replace the baseline test results with the results obtained from gulp runtests.
