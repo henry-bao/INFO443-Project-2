@@ -10,6 +10,14 @@
 ### Introduction
 #### About the Codebase
 This is the codebase for TypeScript, a programming language that builds on JavaScript by adding natural syntax for type specifications to data and adding compiler functionality. Developers can use TypeScript to create their own applications, either client- or server-side.
+
+Fun Facts: 
+<ul>
+<li>TypeScript is a recursive language, so it writes itself.
+
+<li>TypeScript has been 11 years old, and has been rewriten twice.
+</ul>
+
 #### Authors/Maintainers
 This software was developed by Microsoft (a large company) and is currently maintained by the company's employees (628 contributors). Additionally, contributions are accepted when following Microsoft's Code of Conduct, and a number of people appear to be in charge of approving these commits.
 ##### Frequent Contributors:
@@ -139,10 +147,34 @@ gulp baseline-accept                     # Replace the baseline test results wit
 ```
 
 ## Applied Perspective
+### Chosen Perspective : Evolution
+### Perspective Introduction
+### Concerns
+<ol>
+<li>
+<li>
+<li>
+</ol>
 
 ## Styles & Patterns Used
 
+### Architectural Style
+
+### Software Design Patterns
+|Name|Context| Problem | Solution |
+|--|--|--|--|
+|Empty|Empty|Empty|Empty|
+
+
+
 ## Architectural Assessment
+<ol>
+<li>
+<li>
+<li>
+<li>
+<li>
+</ol>
 
 ## System Improvement
 
