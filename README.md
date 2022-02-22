@@ -146,15 +146,19 @@ gulp runtests-parallel                   # Like runtests, but split across multi
 gulp baseline-accept                     # Replace the baseline test results with the results obtained from gulp runtests.
 ```
 
-## Applied Perspective
-### Chosen Perspective : Evolution
+## Applied Perspective: Evolution
 ### Perspective Introduction
 ### Concerns
-<ol>
-<li>
-<li>
-<li>
-</ol>
+
+#### Changes Driven by External Factors
+
+Because TypeScript is built on JavaScript, it has to stay up to date with any updates that JavaScript makes to be consistent.
+
+<!--TODO: finish description-->
+
+<!--#### Concern Title-->
+
+<!--#### Concern Title-->
 
 ## Styles & Patterns Used
 
