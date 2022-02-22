@@ -154,7 +154,7 @@ gulp baseline-accept                     # Replace the baseline test results wit
 
 Because TypeScript is built on JavaScript, it has to stay up to date with any updates that JavaScript makes to be consistent.
 
-<!--TODO: finish description-->
+TypeScript is a superset of JavaScript, meaning that any JavaScript is also TypeScript (and it can also be converted to TypeScript). If additional features get added to JavaScript, the TypeScript compiler needs to be able to understand JS code using these updates in order accurately verify said code.
 
 <!--#### Concern Title-->
 
