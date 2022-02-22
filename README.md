@@ -15,7 +15,7 @@ Fun Facts:
 <ul>
 <li>TypeScript is a recursive language, so it writes itself.
 
-<li>TypeScript has been 11 years old, and has been rewriten twice.
+<li>TypeScript is 11 years old, and has been rewriten twice.
 </ul>
 
 #### Authors/Maintainers
@@ -88,7 +88,7 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 |Component |Role & Relationship|Description|
 |--|--|--|
-|Program.ts|Core Compiler|Initializes and runs the necessary files involved in the compiler|
+|Program.ts|Core Compiler|<ul><li>Initializes and runs the necessary files involved in the compiler</li></ul>|
 |Parser.ts|Crates a syntax tree<br>Depends on: Scanner|<ul><li>Makes tokens from scanner into a tree with more meaning <li> Knows when the right JavaScript is in the wrong context</ul>|
 |Scanner.ts|Internally used and created by Parser|<ul><li>Converts text into syntax tokens <li> Knows only if the JavaScript itself is wrong</ul>|
 |Checker.ts|Checks the syntax tree<br>Depends on: Binder|<ul><li>Provides most of the compiler diagnostics<li>Checks each part of syntax tree's node</ul>|
