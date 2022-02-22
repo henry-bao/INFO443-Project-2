@@ -154,7 +154,9 @@ gulp baseline-accept                     # Replace the baseline test results wit
 
 Because TypeScript is built on JavaScript, it has to stay up to date with any updates that JavaScript makes to be consistent.
 
-TypeScript is a superset of JavaScript, meaning that any JavaScript is also TypeScript (and it can also be converted to TypeScript). If additional features get added to JavaScript, the TypeScript compiler needs to be able to understand JS code using these updates in order accurately verify said code.
+TypeScript is a superset of JavaScript, where any JavaScript is also TypeScript, and the compiler layer in particular compiles TypeScript into JavaScript. When additional features get added to JavaScript—in the form of ECMAScript standards—the TypeScript compiler needs to be able to understand code using these updates in order accurately verify said code. In fact, tests are built into TypeScript to make sure it conform to these standards. This way, it's clear when TS needs to be modified so that users can continue using all the new functionality. ([Source](https://delftswa.gitbooks.io/desosa2018/content/typescript/chapter.html#4-development-view))
+
+Staying up to date is important not only from the perspective of supporting users, but also from a business perspective. Although TypeScript is not for profit, Microsoft would presumably like to retain a wide market of users and be connected to a larger community of developers. Supporting new functionality from JavaScript helps TypeScript stay on the radar and continue being used.
 
 <!--#### Concern Title-->
 
