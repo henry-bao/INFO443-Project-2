@@ -175,6 +175,7 @@ Staying up to date is important not only from the perspective of supporting user
 ### Software Design Patterns
 |Name|Context| Problem | Solution |
 |--|--|--|--|
+|Adapter|In Transformer.ts|Empty|Empty|
 |Empty|Empty|Empty|Empty|
 
 
