@@ -11,7 +11,7 @@
 #### About the Codebase
 This is the codebase for TypeScript, a programming language that builds on JavaScript by adding natural syntax for type specifications to data and adding compiler functionality. Developers can use TypeScript to create their own applications, either client- or server-side.
 
-Fun Facts: 
+Fun Facts:
 <ul>
 <li>TypeScript is a recursive language, so it writes itself.
 
@@ -25,7 +25,7 @@ This software was developed by Microsoft (a large company) and is currently main
 
 ### Learn more about the system
 
-[Official Github](https://github.com/microsoft/TypeScript) | 
+[Official Github](https://github.com/microsoft/TypeScript) |
 [Official Documentations](https://www.typescriptlang.org/) |
 [Basic Syntax](https://learnxinyminutes.com/docs/typescript/#:~:text=TypeScript%20is%20a%20language%20that,scale%20applications%20written%20in%20JavaScript.&text=It%20is%20a%20superset%20of,The%20TypeScript%20compiler%20emits%20JavaScript) |
 [Compiler Details](https://www.youtube.com/watch?v=X8k_4tZ16qU)
@@ -41,12 +41,12 @@ INFO 443 project authors: Alex Gherman, Henry Bao, Lisi Case, & Patrick Cheng
 <details>
           <summary> Quick overview of the compilation process.[^1]</summary>
 
-The process starts with preprocessing. 
+The process starts with preprocessing.
 The preprocessor figures out what files should be included in the compilation by following references (`/// <reference path=... />` tags, `require` and `import` statements).
 
-The parser then generates AST `Node`s. 
-These are just an abstract representation of the user input in a tree format. 
-A `SourceFile` object represents an AST for a given file with some additional information like the file name and source text. 
+The parser then generates AST `Node`s.
+These are just an abstract representation of the user input in a tree format.
+A `SourceFile` object represents an AST for a given file with some additional information like the file name and source text.
 
 The binder then passes over the AST nodes and generates and binds `Symbol`s.
 One `Symbol` is created for each named entity.
@@ -60,16 +60,16 @@ Generating a `SourceFile` (along with its `Symbol`s) is done through calling the
 So far, `Symbol`s represent named entities as seen within a single file, but several declarations can merge multiple files, so the next step is to build a global view of all files in the compilation  by building a `Program`.
 
 A `Program` is a collection of `SourceFile`s and a set of `CompilerOptions`.
-A `Program` is created by calling the `createProgram` API. 
+A `Program` is created by calling the `createProgram` API.
 
-From a `Program` instance a `TypeChecker` can be created. 
-`TypeChecker` is the core of the TypeScript type system. 
+From a `Program` instance a `TypeChecker` can be created.
+`TypeChecker` is the core of the TypeScript type system.
 It is the part responsible for figuring out relationships between `Symbols` from different files, assigning `Type`s to `Symbol`s, and generating any semantic `Diagnostic`s (i.e. errors).
 
 The first thing a `TypeChecker` will do is to consolidate all the `Symbol`s from different `SourceFile`s into a single view, and build a single Symbol Table by "merging" any common `Symbol`s (e.g. `namespace`s spanning multiple files).  
 
 After initializing the original state, the `TypeChecker` is ready to answer any questions about the program.
-Such "questions" might be: 
+Such "questions" might be:
 * What is the `Symbol` for this `Node`?
 * What is the `Type` of this `Symbol`?
 * What `Symbol`s are visible in this portion of the AST?
@@ -80,10 +80,10 @@ The `TypeChecker` computes everything lazily; it only "resolves" the necessary i
 The checker will only examine `Node`s/`Symbol`s/`Type`s that contribute to the question at hand and will not attempt to examine additional entities.
 
 An `Emitter` can also be created from a given `Program`.
-The `Emitter` is responsible for generating the desired output for a given `SourceFile`; this includes `.js`, `.jsx`, `.d.ts`, and `.js.map` outputs. 
+The `Emitter` is responsible for generating the desired output for a given `SourceFile`; this includes `.js`, `.jsx`, `.d.ts`, and `.js.map` outputs.
  </details>
 
- 
+
 ### Table of the main components of TypeScript Compiler
 
 |Component |Role & Relationship|Description|
@@ -98,6 +98,8 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 
 ### System Organization Diagram
+
+<img src="img/TypeScript-UML-Structure-Diagram.png" alt="TypeScript UML Structure Diagram width='1000'/>
 
 #### Dependencies
 
@@ -138,7 +140,7 @@ Additional commands to run tests of your choice and record results are as follow
 gulp tests                               # Build the test infrastructure using the built compiler.
 gulp runtests                            # Run tests using the built compiler and test infrastructure.
 gulp runtests --runner=<runnerName>      # Run tests for a specific suite (e.g., conformance, compiler, fourslash, project, user, and docker).
-                                         # Note: You'll need to have the docker executable in your system path for the docker runner to work, 
+                                         # Note: You'll need to have the docker executable in your system path for the docker runner to work,
                                          # although we are not focusing on docker at the moment.
 gulp runtests --tests=<testPath>         # Run a specific test.
 gulp runtests-parallel                   # Like runtests, but split across multiple threads. Uses a number of threads equal to the system
@@ -149,6 +151,10 @@ gulp baseline-accept                     # Replace the baseline test results wit
 ## Applied Perspective: Evolution
 ### Perspective Introduction
 ### Concerns
+
+#### Dimensions of Change
+Evolution in the context of TypeScript has to take into account several dimensions of change, considering that TypeScript is intended to be a system that is flexible and accepts changes through contributions and even entire rewrites. Functional evolution is a big dimension of change that needs to be considered, as with TypeScript constantly evolving and filling in gaps, functionality of the system and the subsystems it employs must be adaptable. Another important facet to consider is integration evolution. TypeScript must remain compatible with all the systems it interacts with, as well as writes to, such as JavaScript. As JavaScript-related systems evolve, TypeScript has to evolve with them, which can result in pressures put on the system.
+
 
 #### Changes Driven by External Factors
 
