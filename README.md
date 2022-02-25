@@ -179,7 +179,7 @@ Staying up to date is important not only from the perspective of supporting user
 |Adapter|In Transformer.ts|Empty|Empty|
 |Abstract Factory|BaseNodeFactory in baseNodeFactory.ts|Empty|Empty|
 |Builder|In builderPublic.ts|Empty| Empty| 
-|Empty|Empty|Empty|Empty|
+|Visitor|NodeVisitor in types.ts|Empty|Empty|
 
 ## Architectural Assessment
 |Principle| Definition | Examples | Discussion|
