@@ -150,6 +150,8 @@ gulp baseline-accept                     # Replace the baseline test results wit
 
 ## Applied Perspective: Evolution
 ### Perspective Introduction
+From the evolution perspective, we are considering the ability of the system to be flexible in the face of inevitable change after deployment, and if this is balanced against the costs of providing such flexibility. The term evolution means the process of dealing with all of the possible types of changes in the system development life cycle. Thus, this perspective is relevant to most large-scale information systems.
+
 ### Concerns
 
 #### Dimensions of Change
@@ -157,7 +159,6 @@ Evolution in the context of TypeScript has to take into account several dimensio
 
 
 #### Changes Driven by External Factors
-
 Because TypeScript is built on JavaScript, it has to stay up to date with any updates that JavaScript makes to be consistent.
 
 TypeScript is a superset of JavaScript, where any JavaScript is also TypeScript, and the compiler layer in particular compiles TypeScript into JavaScript. When additional features get added to JavaScript—in the form of ECMAScript standards—the TypeScript compiler needs to be able to understand code using these updates in order accurately verify said code. In fact, tests are built into TypeScript to make sure it conform to these standards. This way, it's clear when TS needs to be modified so that users can continue using all the new functionality. ([Source](https://delftswa.gitbooks.io/desosa2018/content/typescript/chapter.html#4-development-view))
