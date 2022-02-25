@@ -178,16 +178,17 @@ Staying up to date is important not only from the perspective of supporting user
 |--|--|--|--|
 |Adapter|In Transformer.ts|Empty|Empty|
 |Abstract Factory|BaseNodeFactory in baseNodeFactory.ts|Empty|Empty|
+|Builder|In builderPublic.ts|Empty| Empty| 
 |Empty|Empty|Empty|Empty|
 
 ## Architectural Assessment
-<ol>
-<li>
-<li>
-<li>
-<li>
-<li>
-</ol>
+|Principle| Definition | Examples | Discussion|
+|--|--|--|--|
+| Single Responsibility Principle| An element should be responsible to one and only one actor. |  | Lots of complex functionality is regularly broken down into small steps. As evident in the provided examples, methods are designed to accomplish very specific and narrow tasks. |
+| Open-Closed Principle |  |  |  |
+| Interface Segregation Principle | Clients should not be forced to implement interfaces they do not use. Interfaces should not have methods that it doesn’t need. |  | The TypeScript codebase uses interface variations to offer reduced/additional functionality for property modification. In the first given example, there are two specific node arrays that allow clients to focus on specialized functionality that fit their specific needs. Rather than being forced to use a mutable node array if the array hasTrailingComma property will never be changed, a client can use a NodeArray interface instead, where that property is readonly and thus does not have functionality that the client doesn't need. Similarly, in the second example, the autoGenerateFlags property may or may not be a read-only property. This allows a client to be intentional in choosing an interface whose functionality best reflects their goal for an object. |
+| Principle of Separation of Concerns | Organize software into separate elements that are as independent as possible  |  | The entire TypeScript codebase is broken up into distinct modules, and similar can be said for those modules as well—including for our focus, the compiler. This helps create an architecture that can be analyzed at various levels of detail, significantly assisting with comprehension as well as code organization. |
+| Principle of Least Knowledge <br> (Law of Demeter) |  An object should never know the internal details of other objects.|  | interact with the properties of a class or other object indirectly. This helps with encapsulation and abstraction, making sure that other objects don't have access to the internal details of a given object. |
 
 ## System Improvement
 
