@@ -165,7 +165,8 @@ TypeScript is a superset of JavaScript, where any JavaScript is also TypeScript,
 
 Staying up to date is important not only from the perspective of supporting users, but also from a business perspective. Although TypeScript is not for profit, Microsoft would presumably like to retain a wide market of users and be connected to a larger community of developers. Supporting new functionality from JavaScript helps TypeScript stay on the radar and continue being used.
 
-<!--#### Concern Title-->
+#### Preservation of Knowledge
+If possible, up-to-date preservation of project knowledge such as a communication platform or documentation is vital for an open-source project like TypeScript. However, this is not an easy task to tackle. A project can allocate only so many resources with a software system that is continuously growing in scope and complexity. In addition, with the nature of open source projects, as contributors come and go, memories would fade. What was known could become unknown. Ultimately, it would cause more time and effort to recover that knowledge. The Preservation of Knowledge might not be a concern for TypeScript yet, but it would be more challenging to carry out once the development state becomes more settled. Thus, TypeScript should have a more robust automated system that records new changes and updates.
 
 <!--#### Concern Title-->
 
@@ -178,7 +179,8 @@ Staying up to date is important not only from the perspective of supporting user
 |--|--|--|--|
 |Adapter|In Transformer.ts|Empty|Empty|
 |Abstract Factory|BaseNodeFactory in baseNodeFactory.ts|Empty|Empty|
-|Empty|Empty|Empty|Empty|
+|Builder|builderPublic.ts|Empty|Empty|
+|Visitor|NodeVisitor in types.ts|Empty|Empty|
 
 ## Architectural Assessment
 <ol>
