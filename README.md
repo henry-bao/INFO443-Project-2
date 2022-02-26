@@ -37,10 +37,8 @@ INFO 443 project authors: Alex Gherman, Henry Bao, Lisi Case, & Patrick Cheng
 ## Development View
 
 ### Components
-
+Quick overview of the compilation process[^1].
 <details>
-          <summary> Quick overview of the compilation process.[^1]</summary>
-
 The process starts with preprocessing.
 The preprocessor figures out what files should be included in the compilation by following references (`/// <reference path=... />` tags, `require` and `import` statements).
 
@@ -81,8 +79,7 @@ The checker will only examine `Node`s/`Symbol`s/`Type`s that contribute to the q
 
 An `Emitter` can also be created from a given `Program`.
 The `Emitter` is responsible for generating the desired output for a given `SourceFile`; this includes `.js`, `.jsx`, `.d.ts`, and `.js.map` outputs.
- </details>
-
+</details>
 
 ### Table of the main components of TypeScript Compiler
 
