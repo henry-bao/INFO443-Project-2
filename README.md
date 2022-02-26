@@ -193,4 +193,4 @@ If possible, up-to-date preservation of project knowledge such as a platform for
 
 
 ## Foot Notes
-1. [TypeScript Compiler Notes by Microsoft](https://github.com/microsoft/TypeScript-Compiler-Notes)
+[^1]: [TypeScript Compiler Notes by Microsoft](https://github.com/microsoft/TypeScript-Compiler-Notes)
