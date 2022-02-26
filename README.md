@@ -19,8 +19,9 @@ Fun Facts:
 </ul>
 
 #### Authors/Maintainers
+
 This software was developed by Microsoft (a large company) and is currently maintained by the company's employees (628 contributors). Additionally, contributions are accepted when following Microsoft's Code of Conduct, and a number of people appear to be in charge of approving these commits.
-##### Frequent Contributors:
+- Frequent Contributors:
 [@ahejlsberg](https://github.com/ahejlsberg), [@sheetalkamat](https://github.com/sheetalkamat), [@sandersn](https://github.com/sandersn), [@andy-ms](https://github.com/andy-ms), & [@DanielRosenwasser](https://github.com/DanielRosenwasser)
 
 ### Learn more about the system
@@ -37,10 +38,8 @@ INFO 443 project authors: Alex Gherman, Henry Bao, Lisi Case, & Patrick Cheng
 ## Development View
 
 ### Components
-
+Quick overview of the compilation process[^1].
 <details>
-          <summary> Quick overview of the compilation process.[^1]</summary>
-
 The process starts with preprocessing.
 The preprocessor figures out what files should be included in the compilation by following references (`/// <reference path=... />` tags, `require` and `import` statements).
 
@@ -81,8 +80,7 @@ The checker will only examine `Node`s/`Symbol`s/`Type`s that contribute to the q
 
 An `Emitter` can also be created from a given `Program`.
 The `Emitter` is responsible for generating the desired output for a given `SourceFile`; this includes `.js`, `.jsx`, `.d.ts`, and `.js.map` outputs.
- </details>
-
+</details>
 
 ### Table of the main components of TypeScript Compiler
 
@@ -166,7 +164,7 @@ TypeScript is a superset of JavaScript, where any JavaScript is also TypeScript,
 Staying up to date is important not only from the perspective of supporting users, but also from a business perspective. Although TypeScript is not for profit, Microsoft would presumably like to retain a wide market of users and be connected to a larger community of developers. Supporting new functionality from JavaScript helps TypeScript stay on the radar and continue being used.
 
 #### Preservation of Knowledge
-If possible, up-to-date preservation of project knowledge such as a communication platform or documentation is vital for an open-source project like TypeScript. However, this is not an easy task to tackle. A project can allocate only so many resources with a software system that is continuously growing in scope and complexity. In addition, with the nature of open source projects, as contributors come and go, memories would fade. What was known could become unknown. Ultimately, it would cause more time and effort to recover that knowledge. The Preservation of Knowledge might not be a concern for TypeScript yet, but it would be more challenging to carry out once the development state becomes more settled. Thus, TypeScript should have a more robust automated system that records new changes and updates.
+If possible, up-to-date preservation of project knowledge such as a platform for communication or documentation is vital for an open-source project like TypeScript. However, this is not an easy task to tackle. A project can allocate only so many resources with a software system that is continuously growing in scope and complexity. In addition, with the nature of open source projects, as contributors come and go, memories would fade. What was known could become unknown. Ultimately, it would cause more time and effort to recover that knowledge. The Preservation of Knowledge might not be a concern for TypeScript yet, but it would be more challenging to carry out once the development state becomes more settled. Thus, TypeScript should have a more robust automated system that records new changes and updates.
 
 <!--#### Concern Title-->
 
@@ -177,9 +175,9 @@ If possible, up-to-date preservation of project knowledge such as a communicatio
 ### Software Design Patterns
 |Name|Context| Problem | Solution |
 |--|--|--|--|
-|Adapter|In `src/compiler/transformer.ts`|Empty|Empty|
+|Adapter|`src/compiler/transformer.ts`|Empty|Empty|
 |Abstract Factory|`BaseNodeFactory` in `src/compiler/factory/baseNodeFactory.ts`|Empty|Empty|
-|Builder|In `src/compiler/builderPublic.ts`|Empty|Empty|
+|Builder|`src/compiler/builderPublic.ts`|Empty|Empty|
 |Visitor|`NodeVisitor` in `src/compiler/types.ts`|Empty|Empty|
 
 ## Architectural Assessment
