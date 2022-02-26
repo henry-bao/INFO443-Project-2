@@ -174,9 +174,9 @@ If possible, up-to-date preservation of project knowledge such as a communicatio
 ### Software Design Patterns
 |Name|Context| Problem | Solution |
 |--|--|--|--|
-|Adapter|In `src/compiler/transformer.ts`|Empty|Empty|
+|Adapter|`src/compiler/transformer.ts`|Empty|Empty|
 |Abstract Factory|`BaseNodeFactory` in `src/compiler/factory/baseNodeFactory.ts`|Empty|Empty|
-|Builder|In `src/compiler/builderPublic.ts`|Empty|Empty|
+|Builder|`src/compiler/builderPublic.ts`|Empty|Empty|
 |Visitor|`NodeVisitor` in `src/compiler/types.ts`|Empty|Empty|
 
 ## Architectural Assessment
