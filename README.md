@@ -15,7 +15,7 @@ Fun Facts:
 <ul>
 <li>TypeScript is a recursive language, so it writes itself.
 
-<li>TypeScript is 11 years old, and has been rewriten twice.
+<li>TypeScript is 11 years old, and has been rewritten twice.
 </ul>
 
 #### Authors/Maintainers
@@ -186,7 +186,7 @@ If possible, up-to-date preservation of project knowledge such as a communicatio
 |Principle| Definition | Examples | Discussion|
 |--|--|--|--|
 | Single Responsibility Principle| An element should be responsible to one and only one actor. |  | Lots of complex functionality is regularly broken down into small steps. As evident in the provided examples, methods are designed to accomplish very specific and narrow tasks. |
-| Open-Closed Principle |  |  |  |
+| Open-Closed Principle | Elements should be open for extension but closed for modification. | Function “parseTag” in parser.ts | The "parseTag" function violates the open-closed principle as it contains several specific functions for certain tags rather than abstracting these functions to a higher level. If a new type needed to be accommodated, this would require modification of existing code. |
 | Interface Segregation Principle | Clients should not be forced to implement interfaces they do not use. Interfaces should not have methods that it doesn’t need. |  | The TypeScript codebase uses interface variations to offer reduced/additional functionality for property modification. In the first given example, there are two specific node arrays that allow clients to focus on specialized functionality that fit their specific needs. Rather than being forced to use a mutable node array if the array hasTrailingComma property will never be changed, a client can use a NodeArray interface instead, where that property is readonly and thus does not have functionality that the client doesn't need. Similarly, in the second example, the autoGenerateFlags property may or may not be a read-only property. This allows a client to be intentional in choosing an interface whose functionality best reflects their goal for an object. |
 | Principle of Separation of Concerns | Organize software into separate elements that are as independent as possible  |  | The entire TypeScript codebase is broken up into distinct modules, and similar can be said for those modules as well—including for our focus, the compiler. This helps create an architecture that can be analyzed at various levels of detail, significantly assisting with comprehension as well as code organization. |
 | Principle of Least Knowledge <br> (Law of Demeter) |  An object should never know the internal details of other objects.|  | interact with the properties of a class or other object indirectly. This helps with encapsulation and abstraction, making sure that other objects don't have access to the internal details of a given object. |
