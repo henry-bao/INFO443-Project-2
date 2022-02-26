@@ -19,8 +19,9 @@ Fun Facts:
 </ul>
 
 #### Authors/Maintainers
+
 This software was developed by Microsoft (a large company) and is currently maintained by the company's employees (628 contributors). Additionally, contributions are accepted when following Microsoft's Code of Conduct, and a number of people appear to be in charge of approving these commits.
-##### Frequent Contributors:
+- Frequent Contributors:
 [@ahejlsberg](https://github.com/ahejlsberg), [@sheetalkamat](https://github.com/sheetalkamat), [@sandersn](https://github.com/sandersn), [@andy-ms](https://github.com/andy-ms), & [@DanielRosenwasser](https://github.com/DanielRosenwasser)
 
 ### Learn more about the system
