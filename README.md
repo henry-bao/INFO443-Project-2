@@ -175,7 +175,7 @@ If possible, up-to-date preservation of project knowledge such as a platform for
 ### Software Design Patterns
 |Name|Context| Problem | Solution |
 |--|--|--|--|
-|Adapter|`src/compiler/transformer.ts`|Empty|Empty|
+|Adapter|`src/compiler/transformer.ts`|Typescript needs to be able to emit files in various compatible formats, like Javascript, for example. The syntax trees created by Typescript are compatible with Typescript, not other languages that a user may want to emit a file to, so the syntax tree must be altered before being passed onto the Emitter.|The transformer uses the adapter pattern to transform a Typescript-compatible syntax tree into a Javascript-compatible syntax tree, which can then be further utilized by the user through whatever means they would like to. The Adapter is a pattern that allows incompatible interfaces to collaborate, and as such, the transformer acts as an Adapter from Typescript to other languages.|
 |Abstract Factory|`BaseNodeFactory` in `src/compiler/factory/baseNodeFactory.ts`|Empty|Empty|
 |Builder|`src/compiler/builderPublic.ts`|Empty|Empty|
 |Visitor|`NodeVisitor` in `src/compiler/types.ts`|Empty|Empty|
