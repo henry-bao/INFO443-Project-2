@@ -9,7 +9,9 @@
 ## Project Overview
 ### Introduction
 #### About the Codebase
-This is the codebase for TypeScript, a programming language that builds on JavaScript by adding natural syntax for type specifications to data and adding compiler functionality. Developers can use TypeScript to create their own applications, either client- or server-side.
+The codebase we examine in this project is TypeScript, a programming language that builds on JavaScript by adding natural syntax for type specifications to data and adding compiler functionality. Developers can use TypeScript to create their own applications, either client- or server-side.
+
+**In this project, we will only focus on the compiler portion of the TypeScript codebase.**
 
 Fun Facts:
 <ul>
@@ -101,7 +103,107 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 #### Dependencies
 
+|Other Libraries| Version|
+|--|--|
+|node|latest|
+|azure-devops-node-api |11.0.1|
+|browserify|1.11.2|
+|eslint|7.12.1|
+|gulp|4.0.0|
+|typescipt|4.5.5|
+
+For full dependencies, see "Details" below:
+<details>
+    ```
+    "@octokit/rest": "latest",
+    "@types/browserify": "latest",
+    "@types/chai": "latest",
+    "@types/convert-source-map": "latest",
+    "@types/glob": "latest",
+    "@types/gulp": "^4.0.9",
+    "@types/gulp-concat": "latest",
+    "@types/gulp-newer": "latest",
+    "@types/gulp-rename": "0.0.33",
+    "@types/gulp-sourcemaps": "0.0.32",
+    "@types/jake": "latest",
+    "@types/merge2": "latest",
+    "@types/microsoft__typescript-etw": "latest",
+    "@types/minimatch": "latest",
+    "@types/minimist": "latest",
+    "@types/mkdirp": "latest",
+    "@types/mocha": "latest",
+    "@types/ms": "latest",
+    "@types/node": "latest",
+    "@types/node-fetch": "^2.3.4",
+    "@types/q": "latest",
+    "@types/source-map-support": "latest",
+    "@types/through2": "latest",
+    "@types/xml2js": "^0.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/experimental-utils": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "async": "latest",
+    "azure-devops-node-api": "^11.0.1",
+    "browser-resolve": "^1.11.2",
+    "browserify": "latest",
+    "chai": "latest",
+    "chalk": "^4.1.2",
+    "convert-source-map": "latest",
+    "del": "5.1.0",
+    "diff": "^4.0.2",
+    "eslint": "7.12.1",
+    "eslint-formatter-autolinkable-stylish": "1.1.4",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsdoc": "30.7.6",
+    "eslint-plugin-no-null": "1.0.2",
+    "fancy-log": "latest",
+    "fs-extra": "^9.0.0",
+    "glob": "latest",
+    "gulp": "^4.0.0",
+    "gulp-concat": "latest",
+    "gulp-insert": "latest",
+    "gulp-newer": "latest",
+    "gulp-rename": "latest",
+    "gulp-sourcemaps": "latest",
+    "merge2": "latest",
+    "minimist": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest",
+    "mocha-fivemat-progress-reporter": "latest",
+    "ms": "^2.1.3",
+    "node-fetch": "^2.6.1",
+    "plugin-error": "latest",
+    "pretty-hrtime": "^1.0.3",
+    "prex": "^0.4.3",
+    "q": "latest",
+    "source-map-support": "latest",
+    "through2": "latest",
+    "typescript": "^4.5.5",
+    "vinyl": "latest",
+    "vinyl-sourcemaps-apply": "latest",
+    "xml2js": "^0.4.19"
+    ```
+</details>
+
+
+<br>
+
+|Components|Dependencies|
+|--|--|
+|program.ts|types.ts|
+|parser.ts|types.ts, scanner.ts|
+|scanner.ts|types.ts|
+|checker.ts|types.ts|
+|binder.ts|types.ts|
+|emitter.ts|types.ts|
+|transformer.ts|types.ts|
+
+
+
+
 ### Source Code Structure (Codeline Model)
+
+<img  src='./img/codeline_model.png'  alt='Codeline Model'  width='700'>
 
 ### Testing & Configuration
 
@@ -175,9 +277,9 @@ If possible, up-to-date preservation of project knowledge such as a platform for
 ### Software Design Patterns
 |Name|Context| Problem | Solution |
 |--|--|--|--|
-|Adapter|`src/compiler/transformer.ts`|Typescript needs to be able to emit files in various compatible formats, like Javascript, for example. The syntax trees created by Typescript are compatible with Typescript, not other languages that a user may want to emit a file to, so the syntax tree must be altered before being passed onto the Emitter.|The transformer uses the adapter pattern to transform a Typescript-compatible syntax tree into a Javascript-compatible syntax tree, which can then be further utilized by the user through whatever means they would like to. The Adapter is a pattern that allows incompatible interfaces to collaborate, and as such, the transformer acts as an Adapter from Typescript to other languages.|
+|Adapter|`src/compiler/transformer.ts`|TypeScript needs to be able to emit files in various compatible formats, like Javascript, for example. The syntax trees created by TypeScript are compatible with TypeScript, not other languages that a user may want to emit a file to, so the syntax tree must be altered before being passed onto the Emitter.|The transformer uses the adapter pattern to transform a TypeScript-compatible syntax tree into a Javascript-compatible syntax tree, which can then be further utilized by the user through whatever means they would like to. The Adapter is a pattern that allows incompatible interfaces to collaborate, and as such, the transformer acts as an Adapter from Typescript to other languages.|
 |Abstract Factory|`BaseNodeFactory` in `src/compiler/factory/baseNodeFactory.ts`|Empty|Empty|
-|Builder|`src/compiler/builderPublic.ts`|Empty|Empty|
+|Builder|`builder.ts`, `builderPublic.ts`, `builderState.ts`, and `builderStatePublic.ts` in  `src/compiler/`|TypeScript needs to create different complex objects for a variaty of tasks, such as managing program state changes, creating diagnostic fuctions and watch funcitons. These complex objects all have the same construction process.|The builder files provides the other components a large number of builder interfaces to unifiy and simplify the complex object creating process. Allowing clients to create different complex objcts using the same construction process.|
 |Visitor|`NodeVisitor` in `src/compiler/types.ts`|Empty|Empty|
 
 ## Architectural Assessment
