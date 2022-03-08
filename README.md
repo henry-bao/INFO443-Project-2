@@ -288,6 +288,16 @@ Likelihood: Because JavaScript is still regularly being developed, TypeScript wi
 
 Timescale: These updates, while not necessarily specified in advance, appear on a short time frame multiple times a year, dependent on when JavaScript makes its own updates.
 
+#### Assess Ease of Evolution
+
+##### Assessing Functional Evolution
+
+Looking to TypeScript's history of evolution, as well as considering the robust functionality that has already been implemented into TypeScript as a language, the changes required to accomplish additional functionality would likely be fairly risk-free and time/cost-friendly. As an open-source project managed by Microsoft, this aspect of TypeScript's evolution is well accounted for. This can be seen in TypeScript's incremental updates which have occurred every couple of months since it's 1.0 release version in 2014. The functional changes occurring more recently have been described as system improvements and more specified increases in functionality. This indicates that future changes will likely be similarly specific, small, and unobtrusive.
+
+##### Assessing Integration Evolution:
+
+Integration within TypeScript is a more high-risk point of evolution needs due to the dependence on JavaScript updates. As JavaScript evolves, TypeScript naturally cannot evolve until updates have already been released. This type of integration relationship leaves the door open for there being a period of time when JavaScript has updated more significantly while TypeScript has not yet made the changes necessary to support the changes, leading to errors in TypeScript's functionality. However, in terms of assessing risk versus a need for evolution, this type of improvement that occurs out of necessity for filling in the gaps between JavaScript and TypeScript updates, this is a needed risk to assume in order to maintain the core functionality of the program.
+
 ## Styles & Patterns Used
 
 ### Architectural Style
