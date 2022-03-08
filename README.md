@@ -268,7 +268,25 @@ Staying up to date is important not only from the perspective of supporting user
 #### Preservation of Knowledge
 If possible, up-to-date preservation of project knowledge such as a platform for communication or documentation is vital for an open-source project like TypeScript. However, this is not an easy task to tackle. A project can allocate only so many resources with a software system that is continuously growing in scope and complexity. In addition, with the nature of open source projects, as contributors come and go, memories would fade. What was known could become unknown. Ultimately, it would cause more time and effort to recover that knowledge. The Preservation of Knowledge might not be a concern for TypeScript yet, but it would be more challenging to carry out once the development state becomes more settled. Thus, TypeScript should have a more robust automated system that records new changes and updates.
 
-<!--#### Concern Title-->
+### Activities
+
+#### Characterize the Evolution Needs
+
+##### Type: Functional Evolution
+
+Magnitude: Because TypeScript has types, not only does TypeScript support existing functionality from JavaScript with this addition, but types allow TypeScript to add additional features such as a compiler and other features related to error detection.
+
+Likelihood: Most of the stand-alone functionality for the compiler has been implemented, so future updates are likely to be small.
+
+Timescale: These updates are not specific, but rather vague needs for changes sometime in the future depending on how techniques and algorithms for identifying and handling errors develop (as well as the second type of evolution described below).
+
+##### Type: Integration Evolution
+
+Magnitude: Since TypeScript is a superset of JavaScript, any JavaScript program is a valid TypeScript, and TypeScript must therefore have implementations to understand and support all of JavaScript. Additionally, it supports JavaScript frameworks such as React.
+
+Likelihood: Because JavaScript is still regularly being developed, TypeScript will continue to be developed as well.
+
+Timescale: These updates, while not necessarily specified in advance, appear on a short time frame multiple times a year, dependent on when JavaScript makes its own updates.
 
 ## Styles & Patterns Used
 
