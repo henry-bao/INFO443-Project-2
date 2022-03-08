@@ -114,7 +114,7 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 For full dependencies, see "Details" below:
 <details>
-    ```
+    <pre>
     "@octokit/rest": "latest",
     "@types/browserify": "latest",
     "@types/chai": "latest",
@@ -182,7 +182,7 @@ For full dependencies, see "Details" below:
     "vinyl": "latest",
     "vinyl-sourcemaps-apply": "latest",
     "xml2js": "^0.4.19"
-    ```
+    </pre>
 </details>
 
 
