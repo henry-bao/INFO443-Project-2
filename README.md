@@ -303,7 +303,7 @@ Integration within TypeScript is a more high-risk point of evolution needs due t
 ### Architectural Style
 The goal of the TypeScript compiler is to transform a series of `.js`, `.ts`, `.json`, and `.d.ts` files into `.js`, `.d.ts`, and `.js.map` files accordingly. To abstract this process in a higher-level sense, the compiler takes the sources files through a sequential linear process that incorporates the **Pipe & Filter** Architectural style. 
 
-The TypeScript compiler is split into 6 different programs:
+The TypeScript compiler can be generalized into 6 different operations:
 |Name|Operation|
 |--|--|
 |Scanner|Reads text from left to right and creates syntax tokens|
