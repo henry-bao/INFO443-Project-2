@@ -291,6 +291,18 @@ Timescale: These updates, while not necessarily specified in advance, appear on 
 ## Styles & Patterns Used
 
 ### Architectural Style
+The goal of the TypeScript compiler is to transform a series of `.js`, `.ts`, `.json`, and `.d.ts` files into `.js`, `.d.ts`, and `.js.map` files accordingly. To abstract this process in a higher-level sense, the compiler takes the sources files through a sequential linear process that incorporates the Pipe & Filter Architectural style. 
+
+The TypeScript compiler is split into 6 different programs:
+|Name|Operation|
+|--|--|
+|Scanner|Reads text from left to right and creates syntax tokens|
+|Parser|Examines tokens from the scanner and creates syntax trees accordingly|
+|Binder|Cycles through syntax trees and links symbols|
+|Checker|Compares symbols across all syntax trees and gives diagnostics|
+|Emitter|Takes syntax trees and emits `.js`, `.d.ts` files|
+
+<img src="./img/ts_compiler_architecture.jpg" alt="An architecture diagram of the TypeScript compiler" width='1000'/>
 
 ### Software Design Patterns
 |Name|Context| Problem | Solution |
