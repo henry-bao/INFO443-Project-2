@@ -337,7 +337,10 @@ The TypeScript compiler can be generalized into 6 different operations:
 | Principle of Least Knowledge <br> (Law of Demeter) |  An object should never know the internal details of other objects.| <ol><li>`utilities.ts` line 4887 <br> `getModifierFlagsWorker` returns property of node <li> `binder.ts` line 18 <br> `getModuleInstanceState` returns node.body property <li> `corePublic.ts`<ul><li> line 56: set method for ESMap <li> line 41: get key for ReadonlyESMAP</ul></ol> | Throughout the codebase, getter and setter methods are used to allow clients to interact with the properties of a class or other object indirectly. This helps with encapsulation and abstraction, making sure that other objects don't have access to the internal details of a given object. |
 
 ## System Improvement
-
+| Location | Problem | Refactoring |
+| -- | -- | -- |
+|`parser.ts` line 1822, const result | | |
+|'parser.ts` line 7932, function parseTag |||
 
 ## Foot Notes
 [^1]: [TypeScript Compiler Notes by Microsoft](https://github.com/microsoft/TypeScript-Compiler-Notes)
