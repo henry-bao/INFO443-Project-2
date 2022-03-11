@@ -1,10 +1,8 @@
 # INFO 443 Project 2 -- TypeScript
 
-<figure>
-<figcaption align="center"> <b>The Logo of TypeScript</b> </figcaption>
-<img  src='./img/typescript.png'  alt='TypeScript logo'  width='700'>
-<figcaption align="center"> <b>Figure 1: The Logo of TypeScript</b> </figcaption>
-</figure>
+| ![TypeScript Logo](./img/typescript.png) | 
+|:--:| 
+| *Figure 1: The Logo of TypeScript* |
 
 ## Project Overview
 ### Introduction
@@ -99,7 +97,9 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 ### System Organization Diagram
 
-<img src="./img/TypeScript-UML-Structure-Diagram.png" alt="TypeScript UML Structure Diagram" width='1000'/>
+| ![TypeScript UML Structure Diagram](./img/TypeScript-UML-Structure-Diagram.png) | 
+|:--:| 
+| *Figure 2: TypeScript UML Structure Diagram* |
 
 #### Dependencies
 
@@ -203,7 +203,9 @@ For full dependencies, see "Details" below:
 
 ### Source Code Structure (Codeline Model)
 
-<img  src='./img/codeline_model.png'  alt='Codeline Model'  width='700'>
+| ![Codeline Model](./img/codeline_model.png) | 
+|:--:| 
+| *Figure 3: Codeline Model* |
 
 ### Testing & Configuration
 
@@ -312,7 +314,10 @@ The TypeScript compiler can be generalized into 6 different operations:
 |Checker|Compares symbols across all syntax trees and gives diagnostics|
 |Emitter|Takes syntax trees and emits `.js`, `.d.ts` files|
 
-<img src="./img/ts_compiler_architecture.jpg" alt="An architecture diagram of the TypeScript compiler" width='1000'/>
+
+| ![Architecture Diagram of the TypeScript Compiler](./img/ts_compiler_architecture.jpg) | 
+|:--:| 
+| *Figure 4: Architecture Diagram of the TypeScript Compiler* |
 
 ### Software Design Patterns
 |Name|Context| Problem | Solution |
