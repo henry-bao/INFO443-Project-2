@@ -340,7 +340,7 @@ The TypeScript compiler can be generalized into 6 different operations:
 | Location | Problem | Refactoring |
 | -- | -- | -- |
 |`parser.ts` line 1822, const result | | |
-|'parser.ts` line 7932, function parseTag | The problem with this function that we are aiming to address through refactoring is its violation of the Open-Closed Principle, as discussed earlier in our report. The function contains several tag-specific functions that aren't abstracted out to allow for extension rather than modification of the function if more types were added to TypeScript and therefore needed to be accounted for. | First, we extracted these tag-specific functions into a separate class. This was necessary to address the abstraction problem of the parseTag function so that these tag-specific functions could be contained in a separate class. |
+|`parser.ts` line 7932, function parseTag | The problem with this function that we are aiming to address through refactoring is its violation of the Open-Closed Principle, as discussed earlier in our report. The function contains several tag-specific functions that aren't abstracted out to allow for extension rather than modification of the function if more types were added to TypeScript and therefore needed to be accounted for. | First, we extracted these tag-specific functions into a separate class. This was necessary to address the abstraction problem of the parseTag function so that these tag-specific functions could be contained in a separate class. |
 
 ## Foot Notes
 [^1]: [TypeScript Compiler Notes by Microsoft](https://github.com/microsoft/TypeScript-Compiler-Notes)
