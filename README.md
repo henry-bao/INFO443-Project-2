@@ -97,7 +97,7 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 ### System Organization Diagram
 
-| ![TypeScript UML Structure Diagram](./img/TypeScript-UML-Structure-Diagram.png) |
+| ![TypeScript UML Structure Diagram](./img/TypeScript-UML-Structure-Diagram-Updated.png) |
 |:--:|
 | *Figure 2: TypeScript UML Structure Diagram* |
 
