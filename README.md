@@ -233,7 +233,7 @@ npm ci
 Run tests for the compiler using the following command:
 
 ```
-gulp runtests --runner=<compiler>        # Run tests for the compiler suite.
+gulp runtests --runner=compiler          # Run tests for the compiler suite.
 ```
 
 Additional commands to run tests of your choice and record results are as follows:
