@@ -1,7 +1,7 @@
 # INFO 443 Project 2 -- TypeScript
 
-| ![TypeScript Logo](./img/typescript.png) | 
-|:--:| 
+| ![TypeScript Logo](./img/typescript.png) |
+|:--:|
 | *Figure 1: The Logo of TypeScript* |
 
 ## Project Overview
@@ -97,8 +97,8 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 ### System Organization Diagram
 
-| ![TypeScript UML Structure Diagram](./img/TypeScript-UML-Structure-Diagram.png) | 
-|:--:| 
+| ![TypeScript UML Structure Diagram](./img/TypeScript-UML-Structure-Diagram.png) |
+|:--:|
 | *Figure 2: TypeScript UML Structure Diagram* |
 
 #### Dependencies
@@ -203,8 +203,8 @@ For full dependencies, see "Details" below:
 
 ### Source Code Structure (Codeline Model)
 
-| ![Codeline Model](./img/codeline_model.png) | 
-|:--:| 
+| ![Codeline Model](./img/codeline_model.png) |
+|:--:|
 | *Figure 3: Codeline Model* |
 
 ### Testing & Configuration
@@ -303,7 +303,7 @@ Integration within TypeScript is a more high-risk point of evolution needs due t
 ## Styles & Patterns Used
 
 ### Architectural Style
-The goal of the TypeScript compiler is to transform a series of `.js`, `.ts`, `.json`, and `.d.ts` files into `.js`, `.d.ts`, and `.js.map` files accordingly. To abstract this process in a higher-level sense, the compiler takes the sources files through a sequential linear process that incorporates the **Pipe & Filter** Architectural style. 
+The goal of the TypeScript compiler is to transform a series of `.js`, `.ts`, `.json`, and `.d.ts` files into `.js`, `.d.ts`, and `.js.map` files accordingly. To abstract this process in a higher-level sense, the compiler takes the sources files through a sequential linear process that incorporates the **Pipe & Filter** Architectural style.
 
 The TypeScript compiler can be generalized into 6 different operations:
 |Name|Operation|
@@ -315,8 +315,8 @@ The TypeScript compiler can be generalized into 6 different operations:
 |Emitter|Takes syntax trees and emits `.js`, `.d.ts` files|
 
 
-| ![Architecture Diagram of the TypeScript Compiler](./img/ts_compiler_architecture.jpg) | 
-|:--:| 
+| ![Architecture Diagram of the TypeScript Compiler](./img/ts_compiler_architecture.jpg) |
+|:--:|
 | *Figure 4: Architecture Diagram of the TypeScript Compiler* |
 
 ### Software Design Patterns
@@ -340,7 +340,7 @@ The TypeScript compiler can be generalized into 6 different operations:
 | Location | Problem | Refactoring |
 | -- | -- | -- |
 |`parser.ts` line 1822, const result | | |
-|'parser.ts` line 7932, function parseTag |||
+|'parser.ts` line 7932, function parseTag | The problem with this function that we are aiming to address through refactoring is its violation of the Open-Closed Principle, as discussed earlier in our report. The function contains several tag-specific functions that aren't abstracted out to allow for extension rather than modification of the function if more types were added to TypeScript and therefore needed to be accounted for. | First, we extracted these tag-specific functions into a separate class. This was necessary to address the abstraction problem of the parseTag function so that these tag-specific functions could be contained in a separate class. |
 
 ## Foot Notes
 [^1]: [TypeScript Compiler Notes by Microsoft](https://github.com/microsoft/TypeScript-Compiler-Notes)
