@@ -190,12 +190,12 @@ For full dependencies, see "Details" below:
 
 |Components|Dependencies|
 |--|--|
-|program.ts|types.ts|
+|program.ts|types.ts, parser.ts, scanner.ts, checker.ts, emitter.ts, transformer.ts|
 |parser.ts|types.ts, scanner.ts|
 |scanner.ts|types.ts|
-|checker.ts|types.ts|
+|checker.ts|types.ts, binder.ts|
 |binder.ts|types.ts|
-|emitter.ts|types.ts|
+|emitter.ts|types.ts, transformer.ts|
 |transformer.ts|types.ts|
 
 
