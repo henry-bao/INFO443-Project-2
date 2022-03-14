@@ -1,10 +1,8 @@
 # INFO 443 Project 2 -- TypeScript
 
-<figure>
-<figcaption align="center"> <b>The Logo of TypeScript</b> </figcaption>
-<img  src='./img/typescript.png'  alt='TypeScript logo'  width='700'>
-<figcaption align="center"> <b>Figure 1: The Logo of TypeScript</b> </figcaption>
-</figure>
+| ![TypeScript Logo](./img/typescript.png) |
+|:--:|
+| *Figure 1: The Logo of TypeScript* |
 
 ## Project Overview
 ### Introduction
@@ -99,7 +97,9 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 ### System Organization Diagram
 
-<img src="./img/TypeScript-UML-Structure-Diagram.png" alt="TypeScript UML Structure Diagram" width='1000'/>
+| ![TypeScript UML Structure Diagram](./img/TypeScript-UML-Structure-Diagram-Updated.png) |
+|:--:|
+| *Figure 2: TypeScript UML Structure Diagram* |
 
 #### Dependencies
 
@@ -114,7 +114,7 @@ The `Emitter` is responsible for generating the desired output for a given `Sour
 
 For full dependencies, see "Details" below:
 <details>
-    ```
+    <pre>
     "@octokit/rest": "latest",
     "@types/browserify": "latest",
     "@types/chai": "latest",
@@ -182,7 +182,7 @@ For full dependencies, see "Details" below:
     "vinyl": "latest",
     "vinyl-sourcemaps-apply": "latest",
     "xml2js": "^0.4.19"
-    ```
+    </pre>
 </details>
 
 
@@ -203,7 +203,9 @@ For full dependencies, see "Details" below:
 
 ### Source Code Structure (Codeline Model)
 
-<img  src='./img/codeline_model.png'  alt='Codeline Model'  width='700'>
+| ![Codeline Model](./img/codeline_model.png) |
+|:--:|
+| *Figure 3: Codeline Model* |
 
 ### Testing & Configuration
 
@@ -231,7 +233,7 @@ npm ci
 Run tests for the compiler using the following command:
 
 ```
-gulp runtests --runner=<compiler>        # Run tests for the compiler suite.
+gulp runtests --runner=compiler          # Run tests for the compiler suite.
 ```
 
 Additional commands to run tests of your choice and record results are as follows:
@@ -268,30 +270,79 @@ Staying up to date is important not only from the perspective of supporting user
 #### Preservation of Knowledge
 If possible, up-to-date preservation of project knowledge such as a platform for communication or documentation is vital for an open-source project like TypeScript. However, this is not an easy task to tackle. A project can allocate only so many resources with a software system that is continuously growing in scope and complexity. In addition, with the nature of open source projects, as contributors come and go, memories would fade. What was known could become unknown. Ultimately, it would cause more time and effort to recover that knowledge. The Preservation of Knowledge might not be a concern for TypeScript yet, but it would be more challenging to carry out once the development state becomes more settled. Thus, TypeScript should have a more robust automated system that records new changes and updates.
 
-<!--#### Concern Title-->
+### Activities
+
+#### Characterize the Evolution Needs
+
+##### Type: Functional Evolution
+
+Magnitude: Because TypeScript has types, not only does TypeScript support existing functionality from JavaScript with this addition, but types allow TypeScript to add additional features such as a compiler and other features related to error detection.
+
+Likelihood: Most of the stand-alone functionality for the compiler has been implemented, so future updates are likely to be small.
+
+Timescale: These updates are not specific, but rather vague needs for changes sometime in the future depending on how techniques and algorithms for identifying and handling errors develop (as well as the second type of evolution described below).
+
+##### Type: Integration Evolution
+
+Magnitude: Since TypeScript is a superset of JavaScript, any JavaScript program is a valid TypeScript, and TypeScript must therefore have implementations to understand and support all of JavaScript. Additionally, it supports JavaScript frameworks such as React.
+
+Likelihood: Because JavaScript is still regularly being developed, TypeScript will continue to be developed as well.
+
+Timescale: These updates, while not necessarily specified in advance, appear on a short time frame multiple times a year, dependent on when JavaScript makes its own updates.
+
+#### Assess Ease of Evolution
+
+##### Assessing Functional Evolution
+
+Looking to TypeScript's history of evolution, as well as considering the robust functionality that has already been implemented into TypeScript as a language, the changes required to accomplish additional functionality would likely be fairly risk-free and time/cost-friendly. As an open-source project managed by Microsoft, this aspect of TypeScript's evolution is well accounted for. This can be seen in TypeScript's incremental updates which have occurred every couple of months since it's 1.0 release version in 2014. The functional changes occurring more recently have been described as system improvements and more specified increases in functionality. This indicates that future changes will likely be similarly specific, small, and unobtrusive.
+
+##### Assessing Integration Evolution:
+
+Integration within TypeScript is a more high-risk point of evolution needs due to the dependence on JavaScript updates. As JavaScript evolves, TypeScript naturally cannot evolve until updates have already been released. This type of integration relationship leaves the door open for there being a period of time when JavaScript has updated more significantly while TypeScript has not yet made the changes necessary to support the changes, leading to errors in TypeScript's functionality. However, in terms of assessing risk versus a need for evolution, this type of improvement that occurs out of necessity for filling in the gaps between JavaScript and TypeScript updates, this is a needed risk to assume in order to maintain the core functionality of the program.
 
 ## Styles & Patterns Used
 
 ### Architectural Style
+The goal of the TypeScript compiler is to transform a series of `.js`, `.ts`, `.json`, and `.d.ts` files into `.js`, `.d.ts`, and `.js.map` files accordingly. To abstract this process in a higher-level sense, the compiler takes the sources files through a sequential linear process that incorporates the **Pipe & Filter** Architectural style.
+
+The TypeScript compiler can be generalized into 6 different operations:
+|Name|Operation|
+|--|--|
+|Scanner|Reads text from left to right and creates syntax tokens|
+|Parser|Examines tokens from the scanner and creates syntax trees accordingly|
+|Binder|Cycles through syntax trees and links symbols|
+|Checker|Compares symbols across all syntax trees and gives diagnostics|
+|Emitter|Takes syntax trees and emits `.js`, `.d.ts` files|
+
+
+| ![Architecture Diagram of the TypeScript Compiler](./img/ts_compiler_architecture.jpg) |
+|:--:|
+| *Figure 4: Architecture Diagram of the TypeScript Compiler* |
 
 ### Software Design Patterns
 |Name|Context| Problem | Solution |
 |--|--|--|--|
-|Adapter|`src/compiler/transformer.ts`|TypeScript needs to be able to emit files in various compatible formats, like Javascript, for example. The syntax trees created by TypeScript are compatible with TypeScript, not other languages that a user may want to emit a file to, so the syntax tree must be altered before being passed onto the Emitter.|The transformer uses the adapter pattern to transform a TypeScript-compatible syntax tree into a Javascript-compatible syntax tree, which can then be further utilized by the user through whatever means they would like to. The Adapter is a pattern that allows incompatible interfaces to collaborate, and as such, the transformer acts as an Adapter from Typescript to other languages.|
-|Abstract Factory|`BaseNodeFactory` in `src/compiler/factory/baseNodeFactory.ts`|Empty|Empty|
-|Builder|`builder.ts`, `builderPublic.ts`, `builderState.ts`, and `builderStatePublic.ts` in  `src/compiler/`|TypeScript needs to create different complex objects for a variaty of tasks, such as managing program state changes, creating diagnostic fuctions and watch funcitons. These complex objects all have the same construction process.|The builder files provides the other components a large number of builder interfaces to unifiy and simplify the complex object creating process. Allowing clients to create different complex objcts using the same construction process.|
-|Visitor|`NodeVisitor` in `src/compiler/types.ts`|Empty|Empty|
+|Adapter|`TypeScript/src/compiler/transformer.ts`|TypeScript needs to be able to emit files in various compatible formats, like Javascript, for example. The syntax trees created by TypeScript are compatible with TypeScript, not other languages that a user may want to emit a file to, so the syntax tree must be altered before being passed onto the Emitter.|The transformer uses the adapter pattern to transform a TypeScript-compatible syntax tree into a Javascript-compatible syntax tree, which can then be further utilized by the user through whatever means they would like to. The Adapter is a pattern that allows incompatible interfaces to collaborate, and as such, the transformer acts as an Adapter from Typescript to other languages.|
+|Abstract Factory|`BaseNodeFactory` in `TypeScript/src/compiler/factory/baseNodeFactory.ts`|TypeScript needs to able to create a syntax tree for parsing JavaScript, which is composed of nodes of a variety of predefined types representing different parts of syntax.|To abstract out this creation, TypeScript uses a `BaseNodeFactory` to abstract out creating a group of nodes. This way, clients of this class don't need to worry about the nitty-gritty details of all of the `ObjectAllocator`'s `Node` constructors and can create instances of nodes more simply and within a shared context.|
+|Builder|`builder.ts`, `builderPublic.ts`, `builderState.ts`, and `builderStatePublic.ts` in  `TypeScript/src/compiler/`|TypeScript needs to create different complex objects for a variety of tasks, such as managing program state changes, creating diagnostic functions and watch functions. These complex objects all have the same construction process.|The builder files provides the other components a large number of builder interfaces to unify and simplify the complex object creating process. Allowing clients to create different complex objects using the same construction process.|
+|Visitor|`NodeVisitor` in `TypeScript/src/compiler/types.ts`|In TypeScript, each node represents a fundamental building block. These nodes need to be identified and transformed in a flexible manner when it comes to adding new behaviors to existing functionalities without violating the Single Responsibility Principle.|The visitor interface declares a set of visiting methods that correspond to the accepted node that is passed in. The functions will then process and possibly transforms the node. This pattern permits nodes to be operating without figuring out their concrete classes.|
 
 ## Architectural Assessment
 |Principle| Definition | Examples | Discussion|
 |--|--|--|--|
-| Single Responsibility Principle| An element should be responsible to one and only one actor. | The parser component is used to build syntax trees. In `parser.ts`, there are many functions that are each responsible for a small step of the syntax tree building process. For example, the function `findHighestListElementThatStartsAtPosition` at line 9230  | Lots of complex functionality is regularly broken down into small steps. As evident in the provided examples, methods are designed to accomplish very specific and narrow tasks. |
-| Open-Closed Principle | Elements should be open for extension but closed for modification. | <ol> <li>Function “parseTag” in parser.ts</li> <li>Function ``</li></ol> | The "parseTag" function violates the open-closed principle as it contains several specific functions for certain tags rather than abstracting these functions to a higher level. If a new type needed to be accommodated, this would require modification of existing code. |
-| Interface Segregation Principle | Clients should not be forced to implement interfaces they do not use. Interfaces should not have methods that it doesn’t need. | <ol><li>`type.ts` - property `hasTrailingComma` in two interfaces at line 1009 ~ 1014: `MutableNodeArray` and `NodeArray`<li>`type.ts` property `autoGenerateFlags` at line 1125 - `Identifier` interface, and at line 1147 `GeneratedIdentifier` interface</ol> | The TypeScript codebase uses interface variations to offer reduced/additional functionality for property modification. In the first given example, there are two specific node arrays that allow clients to focus on specialized functionality that fit their specific needs. Rather than being forced to use a mutable node array if the array hasTrailingComma property will never be changed, a client can use a NodeArray interface instead, where that property is readonly and thus does not have functionality that the client doesn't need. Similarly, in the second example, the autoGenerateFlags property may or may not be a read-only property. This allows a client to be intentional in choosing an interface whose functionality best reflects their goal for an object. |
-| Principle of Separation of Concerns | Organize software into separate elements that are as independent as possible  | under`TypeScript/src`:<br><ul><li>`compiler/`<li>`debug/`<li>`server/`<li>`services/`<li>...</ul> <br> under `TypeScript/src/compiler/`: <br> <ul><li>`parser.ts`<li>`scanner.ts`<li>`checker.ts`<li>`binder.ts`<li>`emitter.ts`<li>`transformer.ts`</ul> | The entire TypeScript codebase is broken up into distinct modules, and similar can be said for those modules as well—including for our focus, the compiler. This helps create an architecture that can be analyzed at various levels of detail, significantly assisting with comprehension as well as code organization. |
-| Principle of Least Knowledge <br> (Law of Demeter) |  An object should never know the internal details of other objects.| <ol><li>`utilities.ts` line 4887 <br> `getModifierFlagsWorker` returns property of node <li> `binder.ts` line 18 <br> `getModuleInstanceState` returns node.body property <li> `corePublic.ts`<ul><li> line 56: set method for ESMap <li> line 41: get key for ReadonlyESMAP</ul></ol> | Throughout the codebase, getter and setter methods are used to allow clients to interact with the properties of a class or other object indirectly. This helps with encapsulation and abstraction, making sure that other objects don't have access to the internal details of a given object. |
+| Single Responsibility Principle| An element should be responsible to one and only one actor. | <ol><li>The parser component is used to build syntax trees. In `TypeScript/src/compiler/parser.ts`, there are many functions that are each responsible for a small step of the syntax tree building process. For example, the function `findHighestListElementThatStartsAtPosition` at line 9230</li> <li> `TypeScript/src/compiler/sys.ts` @ line 97 `getCustomLevels()` </li> </ol> | <ol><li>Lots of complex functionality is regularly broken down into small steps. As evident in the provided examples, methods are designed to accomplish very specific and narrow tasks.</li> <li> The `getCustomLevels()` function is an example of the Single Responsibility Principle violation. The method gets custom level and also sets the custom level, thus giving it two separate purposes.</li> </ol>|
+| Open-Closed Principle | Elements should be open for extension but closed for modification. | <ol><li>Function `parseTag()` in `TypeScript/src/compiler/parser.ts`</li><li>The function `createMissingNode()` in `TypeScript/src/compiler/parser.ts`</li></ol> | The `parseTag()` function violates the open-closed principle as it contains several specific functions for certain tags rather than abstracting these functions to a higher level. If a new type needed to be accommodated, this would require modification of existing code. <br> The `createMissingNode()` function violates the open-closed principle as it uses a conditional function to identify different `SyntaxKinds` rather than encapsulating the function with abstract funcitons. If a new `SyntaxKind` needed to be accommodated, this would require modification of existing code. |
+| Interface Segregation Principle | Clients should not be forced to implement interfaces they do not use. Interfaces should not have methods that it doesn’t need. | <ol><li>`TypeScript/src/compiler/type.ts` - property `hasTrailingComma` in two interfaces at line 1009 ~ 1014: `MutableNodeArray` and `NodeArray`<li>`TypeScript/src/compiler/type.ts` property `autoGenerateFlags` at line 1125 - `Identifier` interface, and at line 1147 `GeneratedIdentifier` interface</ol> | The TypeScript codebase uses interface variations to offer reduced/additional functionality for property modification. In the first given example, there are two specific node arrays that allow clients to focus on specialized functionality that fit their specific needs. Rather than being forced to use a mutable node array if the array hasTrailingComma property will never be changed, a client can use a NodeArray interface instead, where that property is readonly and thus does not have functionality that the client doesn't need. Similarly, in the second example, the autoGenerateFlags property may or may not be a read-only property. This allows a client to be intentional in choosing an interface whose functionality best reflects their goal for an object. |
+| Principle of Separation of Concerns | Organize software into separate elements that are as independent as possible  | under `TypeScript/src`:<br><ul><li>`compiler/`<li>`debug/`<li>`server/`<li>`services/`<li>...</ul> <br> under `TypeScript/src/compiler/`: <br> <ul><li>`parser.ts`<li>`scanner.ts`<li>`checker.ts`<li>`binder.ts`<li>`emitter.ts`<li>`transformer.ts`</ul> | The entire TypeScript codebase is broken up into distinct modules, and similar can be said for those modules as well—including for our focus, the compiler. This helps create an architecture that can be analyzed at various levels of detail, significantly assisting with comprehension as well as code organization. |
+| Principle of Least Knowledge <br> (Law of Demeter) |  An object should never know the internal details of other objects.| <ol><li>`TypeScript/src/compiler/utilities.ts` line 4887 <br> `getModifierFlagsWorker()` returns property of node <li> `TypeScript/src/compiler/binder.ts` line 18 <br> `getModuleInstanceState()` returns node.body property <li> `TypeScript/src/compiler/corePublic.ts`<ul><li> line 56: set method for ESMap <li> line 41: get key for ReadonlyESMAP</ul></ol> | Throughout the codebase, getter and setter methods are used to allow clients to interact with the properties of a class or other object indirectly. This helps with encapsulation and abstraction, making sure that other objects don't have access to the internal details of a given object. |
 
 ## System Improvement
+| Location | Problem | Refactoring |
+| -- | -- | -- |
+|`TypeScript/src/compiler/parser.ts` line 7932, `parseTag()` | The problem with this function that we are aiming to address through refactoring is its violation of the Open-Closed Principle, as discussed earlier in our report. The function contains several tag-specific functions that aren't abstracted out to allow for extension rather than modification of the function if more types were added to TypeScript and therefore needed to be accounted for. | First, we extracted these tag-specific functions into a separate function. This was necessary to address the abstraction problem of the parseTag function so that these tag-specific functions could be contained in a separate function, additionally supported by dictionaries that contain the individual cases originally encapsulated by the switch within the parseTag function. |
+| `TypeScript/src/compiler/parser.ts` line 7932, `parseSimpleTagAllocator()` | The problem that we are aiming to solve in this function is the repetitive nature of the cases within the switch. Each of these repetitive functions only vary by one parameter, and therefore it is bad practice to have a separate case for each one when this repetition could be abstracted for readability and overall simplicity of the code. | We created a dictionary that would take a tagName from the parseSimpleTagAllocator and select a specific function as the second parameter in the parseSimpleTag function to return. Ultimately, this leaves the parseSimpleTagAllocator with no switch and only a singular parseSimpleTag call that uses the dictionary as a helper. |
+|`TypeScript/src/compiler/parser.ts` line 1815, `createMissingNode()`|  This function used a nested ternary operator to create nodes during the TypeScript compiler's code parsing process. In turn, it rendered the code architecture with  bad readability, as well as some redundancies (e.g., the multiple `kind ===`) | The nested ternary operator was modified into a combination of if and switch statement. This solution provided a clearer code structure for each `SyntaxKind` condition. |
+|`TypeScript/src/compiler/parser.ts` line 9035, `visitNode()`| This function uses many lines of comment to explain the code, while the code was written with bad readability. The comment in this function is used to explain a conditional statement and the code's action accordingly. This is a bad use of comment, because good code should be self-explanatory |We extracted a chunk of the code into a function `checkChildrenIntersections()` to better encapsulate the code. <br><br> We also extracted the conditional statement into a constant value named `intersectsChangeRange` for better readability. <br><br> Now we can delete the comments as we made the code more readable.|
 
 
 ## Foot Notes
